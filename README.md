@@ -153,11 +153,11 @@ export default {
 
 ### Changelog
 
-Detailed changes for each release are documented in the [release notes](https://github.com/surmon-china/vue-awesome-swiper/blob/master/CHANGELOG.md).
+Detailed changes for each release are documented in the [release notes](https://github.com/hoythan/vue-mobcal/blob/master/CHANGELOG.md).
 
 ### License
 
-[MIT](https://github.com/surmon-china/vue-awesome-swiper/blob/master/LICENSE)
+[MIT](https://github.com/hoythan/vue-mobcal/blob/master/LICENSE)
 <!-- <style>
   table {
     font-size: 12px;
