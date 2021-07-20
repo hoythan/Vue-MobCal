@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Demo</title>
+    <link rel="stylesheet" href="../dist/vue-mobcal.css">
+    <script src="https://unpkg.com/vue@2.6.14/dist/vue.js"></script>
+    <script src="../dist/vue-mobcal.umd.min.js"></script>
+  </head>
+  <body>
+    <div id="app">
+        <vue-mob-cal v-model="currentDate" :mode.sync="mode" color="#007873">
+          <template #left>
+            <span>自定义</span>
+          </template>
+          <template #right>
+            <span>自定义</span>
+          </template>
+          <template v-slot:day="props">
+            <span v-if="props.util.isToday(props.day)">今</span>
+            <span v-else>{{ props.day.getDate() }}</span>
+            <!-- A dot will appear at the bottom -->
+            <span v-if="props.day.getDay() === 1" class="mindot" style="background-color: red;"></span>
+            <span v-if="props.day.getDay() === 6" class="mindot"></span>
+            <!-- If you want to display the background, you have to configure this -->
+            <span class="dot"></span> 
+          </template>
+        </vue-mob-cal>
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                mode: 'month',
+                currentDate: new Date()
+            }
+        })
+    </script>
+  </body>
+</html>

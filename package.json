@@ -1,0 +1,66 @@
+{
+  "name": "vue-mobcal",
+  "version": "0.1.1",
+  "author": "hoythan",
+  "homepage": "https://github.com/hoythan",
+  "description": "Vue Mobile Calendar",
+  "keywords": [
+    "vue",
+    "mobile",
+    "mobile calendar",
+    "calendar",
+    "日历",
+    "移动端日历",
+    "钉钉"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hoythan/vue-mobcal"
+  },
+  "license": "MIT",
+  "main": "dist/vue-mobcal.common.js",
+  "unpkg": "dist/vue-mobcal.umd.min.js",
+  "jsdelivr": "dist/vue-mobcal.umd.min.js",
+	"style": "dist/vue-mobcal.css",
+	"files": [
+		"dist",
+    "package.json",
+    "README.md",
+    "LICENSE"
+	],
+	"exports": {
+		".": {
+			"import": "./dist/vue-mobcal.common.js",
+			"require": "./dist/vue-mobcal.umd.js"
+		}
+	},
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lib": "vue-cli-service build --target lib --name vueMobCal --filename vue-mobcal --dest dist ./src/lib/index.js --inline-vue",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "@doofox/base-class.css": "^1.0.7",
+    "core-js": "^3.6.5",
+    "swiper": "^6.7.5",
+    "vue": "^2.6.11"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "@vue/eslint-config-standard": "^5.1.2",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.7.2",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "eslint-plugin-vue": "^6.2.2",
+    "node-sass": "^4.12.0",
+    "postcss-px-to-viewport": "^1.1.1",
+    "sass-loader": "^8.0.2",
+    "vue-template-compiler": "^2.6.11"
+  }
+}
