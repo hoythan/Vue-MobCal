@@ -158,9 +158,7 @@ Detailed changes for each release are documented in the [release notes](https://
 ### License
 
 [MIT](https://github.com/surmon-china/vue-awesome-swiper/blob/master/LICENSE)
-
-
-<style>
+<!-- <style>
   table {
     font-size: 12px;
     width: 100%;
@@ -196,4 +194,4 @@ Detailed changes for each release are documented in the [release notes](https://
     margin-right: 6px;
     border-radius: 100px;
   }
-</style>
+</style> -->
