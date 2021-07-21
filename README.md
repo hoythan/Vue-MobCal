@@ -158,7 +158,7 @@ export default {
 | left | Custom left icon | - |
 | right | Custom right icon | - |
 | day | Custom Calendar Item | <span class="t">	{ date: date, util: object }</span> |
-| - util | Common method | <span class="t">{ isToday: function, isWorkDay: function, isOtherMonth: function, isActiveDay: function, onPrev: function, onNext: function, onChangeMode: function }</span> |
+| - util | Common method | <div class="t">{<br>&emsp;isToday: function, <br>&emsp;isWorkDay: function, <br>&emsp;isOtherMonth: function, <br>&emsp;isActiveDay: function, <br>&emsp;onPrev: function, <br>&emsp;onNext: function, <br>&emsp;onChangeMode: function<br>}</div> |
 
 ### Event
 | Event | Description | Arguments |
