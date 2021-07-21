@@ -19,7 +19,7 @@
 [![NPM](https://nodei.co/npm/vue-mobcal.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/vue-mobcal)
 
 ### Example
-- [CDN example](https://jsfiddle.net/hoythan/a4un3d25/)
+- [CDN example](https://jsfiddle.net/hoythan/a4un3d25/2/)
 
 ---
 
@@ -102,12 +102,18 @@ export default {
   <template #right>
     <span>RightBtn</span>
   </template>
-  <template v-slot:day="props">
-    <span v-if="props.util.isToday(props.day)">今</span>
-    <span v-else>{{ props.day.getDate() }}</span>
+  <template #title>
+    <span>Title</span>
+  </template>
+  <template #week="props">
+    <span>周{{ props.day | week }}</span>
+  </template>
+  <template #day="props">
+    <span v-if="props.util.isToday(props.date)">今</span>
+    <span v-else>{{ props.date.getDate() }}</span>
     <!-- A dot will appear at the bottom -->
-    <span v-if="props.day.getDay() === 1" class="mindot" style="background-color: red;"></span>
-    <span v-if="props.day.getDay() === 6" class="mindot"></span>
+    <span v-if="props.date.getDay() === 1" class="mindot" style="background-color: red;"></span>
+    <span v-if="props.date.getDay() === 6" class="mindot"></span>
     <!-- If you want to display the background, you have to configure this -->
     <span class="dot"></span> 
   </template>
@@ -119,6 +125,13 @@ export default {
     return {
       currentDate: new Date(),
       mode: 'month'
+    }
+  },
+  filters: {
+    week (day) {
+      const days = ['一', '二', '三', '四', '五', '六', '日']
+      day = day || 7
+      return days[day - 1]
     }
   }
 }
@@ -140,14 +153,19 @@ export default {
 
 | Name | Description | SlotProps |
 | :----- | :---- | :---- |
+| title | Custom title | <span class="t">	{ util: object }</span> |
+| week | Custom Week Title | <span class="t">{ day: number }</span> 0-6 |
 | left | Custom left icon | - |
 | right | Custom right icon | - |
-| day | Custom Calendar Item | <span class="t">	{ day: date, util: object }</span> |
-| - util | Common method | <span class="t">{ isToday: function, isWorkDay: function, isOtherMonth: function, isActiveDay: function }</span> |
+| day | Custom Calendar Item | <span class="t">	{ date: date, util: object }</span> |
+| - util | Common method | <span class="t">{ isToday: function, isWorkDay: function, isOtherMonth: function, isActiveDay: function, onPrev: function, onNext: function, onChangeMode: function }</span> |
 
 ### Event
 | Event | Description | Arguments |
 | :----- | :---- | :---- |
+| onPrev | Change to last month/week | - |
+| onNext | Change to next month/week | - |
+| onChangeMode | Toggles display mode or set display mode | <span class="t">mode:!string</span> |
 
 ---
 

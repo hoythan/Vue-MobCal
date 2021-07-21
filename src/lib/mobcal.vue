@@ -3,13 +3,15 @@
     <div class="vue-mobcal-head f-acjc t-c">
       <div class="vue-mobcal-head-left"><slot name="left"></slot></div>
       <div class="vue-mobcal-head-content f1">
-        <i @click.stop.prevent="onPrev">
-          <svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M631.744 774.208l-245.76-292.544 244.224-296.896a38.4 38.4 0 0 0-0.128-47.36c-10.88-13.056-28.48-13.056-39.296 3.328L330.24 454.08a52.992 52.992 0 0 0-8.256 13.312 46.72 46.72 0 0 0 6.208 39.872l264.128 317.76c10.88 9.792 28.608 9.792 39.488-3.264a38.592 38.592 0 0 0-0.128-47.552z"></path></svg>
-        </i>
-        <span class="current-mode">{{ currentTime | month }}</span>
-        <i @click.stop.prevent="onNext">
-          <svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M392.256 774.208l245.76-292.544-244.224-296.896a38.4 38.4 0 0 1 0.128-47.36c10.88-13.056 28.48-13.056 39.296 3.328l260.48 313.344a52.992 52.992 0 0 1 8.256 13.312 46.72 46.72 0 0 1-6.208 39.872L431.616 824.96a27.2 27.2 0 0 1-39.488-3.264 38.592 38.592 0 0 1 0.128-47.552z"></path></svg>
-        </i>
+        <slot name="title" :util="util">
+          <i @click.stop.prevent="onPrev">
+            <svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M631.744 774.208l-245.76-292.544 244.224-296.896a38.4 38.4 0 0 0-0.128-47.36c-10.88-13.056-28.48-13.056-39.296 3.328L330.24 454.08a52.992 52.992 0 0 0-8.256 13.312 46.72 46.72 0 0 0 6.208 39.872l264.128 317.76c10.88 9.792 28.608 9.792 39.488-3.264a38.592 38.592 0 0 0-0.128-47.552z"></path></svg>
+          </i>
+          <span class="current-mode">{{ currentTime | month }}</span>
+          <i @click.stop.prevent="onNext">
+            <svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M392.256 774.208l245.76-292.544-244.224-296.896a38.4 38.4 0 0 1 0.128-47.36c10.88-13.056 28.48-13.056 39.296 3.328l260.48 313.344a52.992 52.992 0 0 1 8.256 13.312 46.72 46.72 0 0 1-6.208 39.872L431.616 824.96a27.2 27.2 0 0 1-39.488-3.264 38.592 38.592 0 0 1 0.128-47.552z"></path></svg>
+          </i>
+        </slot>
       </div>
       <div class="vue-mobcal-head-right">
         <slot name="right"></slot>
@@ -20,13 +22,11 @@
         <table class="vue-mobcal-table-head-fixed">
           <thead>
               <tr>
-                  <th>一</th>
-                  <th>二</th>
-                  <th>三</th>
-                  <th>四</th>
-                  <th>五</th>
-                  <th>六</th>
-                  <th>日</th>
+                  <th v-for="i in 7" :key="`week_${i}`" class="t-c">
+                    <slot name="week" :day="i">
+                      {{ i | week }}
+                    </slot>
+                  </th>
               </tr>
             </thead>
         </table>
@@ -36,26 +36,20 @@
               <table>
                 <thead>
                   <tr>
-                    <th>一</th>
-                    <th>二</th>
-                    <th>三</th>
-                    <th>四</th>
-                    <th>五</th>
-                    <th>六</th>
-                    <th>日</th>
+                    <th v-for="i in 7" :key="`week_${i}`">{{ i }}</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr v-for="(week, index) in getDates(slideDate)" :key="index">
-                    <td v-for="(day, i) in week" :key="i" @click="activeDate = day" :class="{
-                      'is-today': isToday(day),
-                      'is-active-day': isActiveDay(day),
-                      'is-work-day': isWorkDay(day),
-                      'is-other-month' : isOtherMonth(day)
+                    <td v-for="(date, i) in week" :key="i" @click="activeDate = date" :class="{
+                      'is-today': isToday(date),
+                      'is-active-day': isActiveDay(date),
+                      'is-work-day': isWorkDay(date),
+                      'is-other-month' : isOtherMonth(date)
                     }">
                       <div class="detail">
-                        <slot name="day" :day="day" :util="util">
-                          <span>{{ isToday(day) ? '今' : day.getDate()}}</span>
+                        <slot name="day" :date="date" :util="util">
+                          <span>{{ isToday(date) ? '今' : date.getDate()}}</span>
                           <!-- <span class="mindot"></span> -->
                           <span class="dot"></span>
                         </slot>
@@ -117,7 +111,10 @@ export default {
         isToday: this.isToday,
         isWorkDay: this.isWorkDay,
         isOtherMonth: this.isOtherMonth,
-        isActiveDay: this.isActiveDay
+        isActiveDay: this.isActiveDay,
+        onPrev: this.onPrev,
+        onNext: this.onNext,
+        onChangeMode: this.onChangeMode
       }
     }
   },
@@ -172,6 +169,11 @@ export default {
     },
     month (date) {
       return `${date.getMonth() + 1}月`
+    },
+    week (day) {
+      const days = ['一', '二', '三', '四', '五', '六', '日']
+      day = day || 7
+      return days[day - 1]
     }
   },
   methods: {
@@ -275,8 +277,14 @@ export default {
     onNext () {
       this.calSwiper.slideNext()
     },
-    onChangeMode () {
-      this.currentMode = this.currentMode === 'month' ? 'week' : 'month'
+    onChangeMode (mode = false) {
+      if (mode) {
+        if (['month', 'week'].indexOf(mode) !== -1) {
+          this.currentMode = mode
+        }
+      } else {
+        this.currentMode = this.currentMode === 'month' ? 'week' : 'month'
+      }
     }
   },
   watch: {
