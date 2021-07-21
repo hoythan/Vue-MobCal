@@ -21,6 +21,8 @@
 ### Example
 - [CDN example](https://jsfiddle.net/hoythan/a4un3d25/2/)
 
+![image.png](https://i.loli.net/2021/07/21/BXli3sGICa5rcEu.png)
+
 ---
 
 ### Install
