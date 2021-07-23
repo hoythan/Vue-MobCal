@@ -48,7 +48,7 @@ Vue.use(VueMobCal)
 ### Local Registration
 
 ```javascript
-import VueMobCal from 'vue-mobcal'
+import { VueMobCal } from 'vue-mobcal'
 import 'vue-mobcal/dist/vue-mobcal.css'
 
 export default {
