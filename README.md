@@ -19,7 +19,7 @@
 [![NPM](https://nodei.co/npm/vue-mobcal.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/vue-mobcal)
 
 ### Example
-- [CDN example](https://jsfiddle.net/hoythan/a4un3d25/2/)
+- [CDN example](https://jsfiddle.net/hoythan/a4un3d25/5/)
 
 ![image.png](https://i.loli.net/2021/07/21/BXli3sGICa5rcEu.png)
 
