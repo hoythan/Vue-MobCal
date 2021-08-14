@@ -2,6 +2,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+### 0.1.6 (2021-08-14)
+
+- Fixed: Unable to switch modes
+
 ### 0.1.5 (2021-07-23)
 
 - Fixed: Local Registration Error

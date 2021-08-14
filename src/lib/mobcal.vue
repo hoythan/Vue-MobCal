@@ -63,7 +63,7 @@
         </div>
       </div>
     </div>
-    <div @click="onChangeMode" class="vue-mobcal-mode-control t-c" :class="{ expand: this.currentMode === 'month' }">
+    <div @click="onChangeMode(false)" class="vue-mobcal-mode-control t-c" :class="{ expand: this.currentMode === 'month' }">
       <span>
         <svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M246.266795 654.304523C234.028248 666.54307 213.828634 666.481405 201.331856 653.984628 189.200556 641.853327 188.691857 621.369793 201.011961 609.049689L480.945257 329.11639C493.183805 316.877843 513.383419 316.939507 525.880196 329.436288 526.327405 329.883494 526.758819 330.342054 527.174378 330.811136 527.652734 331.235987 528.12141 331.677504 528.579625 332.135718L806.999757 610.555848C819.761472 623.317563 819.933222 643.750592 807.436442 656.247369 795.305146 668.37867 774.482874 668.548635 761.744922 655.810682L503.252779 397.318539 246.266795 654.304523Z"></path></svg>
       </span>
@@ -278,7 +278,7 @@ export default {
       this.calSwiper.slideNext()
     },
     onChangeMode (mode = false) {
-      if (mode) {
+      if (typeof mode === 'boolean' && mode) {
         if (['month', 'week'].indexOf(mode) !== -1) {
           this.currentMode = mode
         }
