@@ -45,7 +45,7 @@
                       'is-today': isToday(date),
                       'is-active-day': isActiveDay(date),
                       'is-work-day': isWorkDay(date),
-                      'is-other-month' : isOtherMonth(date)
+                      'is-other-month' : isOtherMonth(date) && mode === 'month'
                     }">
                       <div class="detail">
                         <slot name="day" :date="date" :util="util">
@@ -120,6 +120,7 @@ export default {
   },
   mounted () {
     this.$nextTick(() => {
+      let swiperChangeTotal = 0
       this.calSwiper = new Swiper('.cal-container', {
         wrapperClass: 'cal-wrapper',
         slideClass: 'cal-slide',
@@ -133,8 +134,11 @@ export default {
         on: {
           // 切换时加载下一个月数据,始终保持只有三个月的数据被渲染
           slideChange: (swiper) => {
-            this.currentTime = this.slidePages[swiper.activeIndex]
-            swiper.slideTo(1, 0)
+            if (swiperChangeTotal !== 0) {
+              this.currentTime = this.slidePages[swiper.activeIndex]
+              swiper.slideTo(1, 0)
+            }
+            swiperChangeTotal++
           }
         }
       })
