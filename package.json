@@ -1,6 +1,6 @@
 {
   "name": "vue-mobcal",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "author": "hoythan",
   "homepage": "https://github.com/hoythan",
   "description": "Vue Mobile Calendar",
@@ -21,19 +21,19 @@
   "main": "dist/vue-mobcal.common.js",
   "unpkg": "dist/vue-mobcal.umd.min.js",
   "jsdelivr": "dist/vue-mobcal.umd.min.js",
-	"style": "dist/vue-mobcal.css",
-	"files": [
-		"dist",
+  "style": "dist/vue-mobcal.css",
+  "files": [
+    "dist",
     "package.json",
     "README.md",
     "LICENSE"
-	],
-	"exports": {
-		".": {
-			"import": "./dist/vue-mobcal.common.js",
-			"require": "./dist/vue-mobcal.umd.js"
-		}
-	},
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/vue-mobcal.common.js",
+      "require": "./dist/vue-mobcal.umd.js"
+    }
+  },
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
@@ -41,7 +41,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "@doofox/base-class.css": "^1.0.7",
+    "@doofox/base-class.css": "^1.0.12",
     "core-js": "^3.6.5",
     "swiper": "^6.7.5",
     "vue": "^2.6.11"
@@ -58,8 +58,8 @@
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.0",
     "eslint-plugin-vue": "^6.2.2",
-    "node-sass": "^4.12.0",
     "postcss-px-to-viewport": "^1.1.1",
+    "sass": "^1.51.0",
     "sass-loader": "^8.0.2",
     "vue-template-compiler": "^2.6.11"
   }

@@ -277,9 +277,11 @@ export default {
     },
     onPrev () {
       this.calSwiper.slideTo()
+      this.$emit('onPrev')
     },
     onNext () {
       this.calSwiper.slideNext()
+      this.$emit('onNext')
     },
     onChangeMode (mode = false) {
       if (typeof mode === 'boolean' && mode) {
@@ -289,6 +291,7 @@ export default {
       } else {
         this.currentMode = this.currentMode === 'month' ? 'week' : 'month'
       }
+      this.$emit('onChangeMode', this.currentMode)
     }
   },
   watch: {

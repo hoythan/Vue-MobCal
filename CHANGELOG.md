@@ -2,6 +2,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+### 0.1.9 (2022-05-07)
+
+- Fixed: Event not responding
+- Update: Package.json Version
+
 ### 0.1.8 (2021-09-01)
 
 - Fixed: Possible date display error in week mode
