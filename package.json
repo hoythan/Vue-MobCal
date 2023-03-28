@@ -1,6 +1,6 @@
 {
   "name": "vue-mobcal",
-  "version": "0.1.9",
+  "version": "0.2.1",
   "author": "hoythan",
   "homepage": "https://github.com/hoythan",
   "description": "Vue Mobile Calendar",
@@ -43,8 +43,7 @@
   "dependencies": {
     "@doofox/base-class.css": "^1.0.12",
     "core-js": "^3.6.5",
-    "swiper": "^6.7.5",
-    "vue": "^2.6.11"
+    "swiper": "^6.7.5"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
@@ -61,6 +60,7 @@
     "postcss-px-to-viewport": "^1.1.1",
     "sass": "^1.51.0",
     "sass-loader": "^8.0.2",
-    "vue-template-compiler": "^2.6.11"
+    "vue-template-compiler": "^2.6.11",
+    "vue": "^2.6.11"
   }
 }

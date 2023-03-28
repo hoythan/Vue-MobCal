@@ -15,14 +15,11 @@
 
 ---
 
-### 中文文档
-- [查看中文文档](./README.CN.md)
-
 ### Vue3
 
-> If you are using Vue 3, please head over [here](https://github.com/hoythan/Vue-MobCal3) for usage.
+> 此插件适用于 Vue2 版本，如果你正在使用 Vue3，请移步[这里](https://github.com/hoythan/Vue-MobCal3)
 
-### Install
+### 安装
 
 ``` bash
 npm install vue-mobcal --save
@@ -31,7 +28,7 @@ npm install vue-mobcal --save
 yarn add vue-mobcal
 ```
 
-### Global Registration
+### 全局引用
 
 ``` javascript
 import Vue from 'vue'
@@ -42,7 +39,7 @@ Vue.use(VueMobCal)
 ```
 
 
-### Local Registration
+### 局部引用
 
 ```javascript
 import { VueMobCal } from 'vue-mobcal'
@@ -55,7 +52,7 @@ export default {
 }
 ```
 
-### CDN
+### 通过 CDN 访问
 
 ``` html
 <link rel="stylesheet" href="https://unpkg.com/vue-mobcal/dist/vue-mobcal.css"/>
@@ -77,8 +74,8 @@ export default {
 </script>
 ```
 
-### Usage
-#### Basic Usage
+### 使用教程
+#### 基础使用
 ```html
 <vue-mob-cal v-model="currentDate" :mode.sync="mode" color="#007873" />
 ```
@@ -92,7 +89,7 @@ export default {
   }
 }
 ```
-#### Custom Slot
+#### 自定义插槽
 ```html
 <vue-mob-cal v-model="currentDate" :mode.sync="mode">
   <template #left>
@@ -142,29 +139,29 @@ export default {
 
 #### Props
 
-| Attribute | Description | Type | Default |
+| 参数名 | 描述 | 类型 | 默认值 |
 | :----- | :---- | :----: | :---- |
-| value |  Current calendar date | <span class="t">Date</span> | <span class="v">new Date()</span> |
-| mode | Display mode, support monthly or weekly display, params <i>month</i><i>week</i> | <span class="t">String</span> | <span class="v">month</span> |
-| color | Theme color | <span class="t">String</span> | <span class="v"><span class="dot"></span>#007ad3</span> |
+| value | 当前日历日期 | <span class="t">Date</span> | <span class="v">new Date()</span> |
+| mode | 显示模式，支持月视图或周视图，参数,<i>month</i><i>week</i> | <span class="t">String</span> | <span class="v">month</span> |
+| color | 主题颜色 | <span class="t">String</span> | <span class="v"><span class="dot"></span>#007ad3</span> |
 
-### Slot
+### 插槽
 
-| Name | Description | SlotProps |
+| 名称 | 描述 | SlotProps |
 | :----- | :---- | :---- |
-| title | Custom title | <span class="t">	{ util: object }</span> |
-| week | Custom Week Title | <span class="t">{ day: number }</span> 0-6 |
-| left | Custom left icon | - |
-| right | Custom right icon | - |
-| day | Custom Calendar Item | <span class="t">	{ date: date, util: object }</span> |
-| - util | Common method | <div class="t">{<br>&emsp;isToday: function, <br>&emsp;isWorkDay: function, <br>&emsp;isOtherMonth: function, <br>&emsp;isActiveDay: function, <br>&emsp;onPrev: function, <br>&emsp;onNext: function, <br>&emsp;onChangeMode: function<br>}</div> |
+| title | 自定义标题 | <span class="t">	{ util: object }</span> |
+| week | 自定义周标题 | <span class="t">{ day: number }</span> 0-6 |
+| left | 头部左侧区域 | - |
+| right | 头部右侧区域 | - |
+| day | 自定义日历项 | <span class="t">	{ date: date, util: object }</span> |
+| - util | 通用方法 | <div class="t">{<br>&emsp;isToday: function, <br>&emsp;isWorkDay: function, <br>&emsp;isOtherMonth: function, <br>&emsp;isActiveDay: function, <br>&emsp;onPrev: function, <br>&emsp;onNext: function, <br>&emsp;onChangeMode: function<br>}</div> |
 
-### Event
+### 事件
 | Event | Description | Arguments |
 | :----- | :---- | :---- |
-| onPrev | Change to last month/week | - |
-| onNext | Change to next month/week | - |
-| onChangeMode | Toggles display mode or set display mode | <span class="t">mode:!string</span> |
+| onPrev | 切换到上个月/周 | - |
+| onNext | 切换到下个月/周 | - |
+| onChangeMode | 切换显示模式或设置显示模式 | <span class="t">mode:!string</span> |
 
 ---
 
