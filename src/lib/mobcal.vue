@@ -41,7 +41,7 @@
                 </thead>
                 <tbody>
                   <tr v-for="(week, index) in getDates(slideDate)" :key="index">
-                    <td v-for="(date, i) in week" :key="i" @click="activeDate = date" :class="{
+                    <td v-for="(date, i) in week" :key="i" @click.stop.prevent="activeDate = date" :class="{
                       'is-today': isToday(date),
                       'is-active-day': isActiveDay(date),
                       'is-work-day': isWorkDay(date),
@@ -72,8 +72,9 @@
 </template>
 
 <script>
-import SwiperCore, { Swiper, Mousewheel } from 'swiper/core'
-SwiperCore.use([Mousewheel])
+// import SwiperCore, { Swiper, Mousewheel } from 'swiper/core'
+// SwiperCore.use([Mousewheel])
+import Swiper from 'swiper'
 
 // 一天的毫秒数
 const oneDayTime = 60 * 60 * 24 * 1000
@@ -130,9 +131,13 @@ export default {
         slidePrevClass: 'cal-slide-prev',
         containerModifierClass: 'cal-container-',
         autoHeight: true,
+        shortSwipes: true,
+        longSwipes: true,
+        touchStartPreventDefault: true,
+        touchMoveStopPropagation: true,
+        passiveListeners: true,
         initialSlide: 1,
         on: {
-          // 切换时加载下一个月数据,始终保持只有三个月的数据被渲染
           slideChange: (swiper) => {
             if (swiperChangeTotal !== 0) {
               this.currentTime = this.slidePages[swiper.activeIndex]
@@ -140,6 +145,14 @@ export default {
             }
             swiperChangeTotal++
           }
+          // 切换时加载下一个月数据,始终保持只有三个月的数据被渲染
+          // slideChange: (swiper) => {
+          //   if (swiperChangeTotal !== 0) {
+          //     this.currentTime = this.slidePages[swiper.activeIndex]
+          //     swiper.slideTo(1, 0)
+          //   }
+          //   swiperChangeTotal++
+          // }
         }
       })
     })
@@ -311,17 +324,17 @@ export default {
     },
     currentTime (val, prev) {
       // 如果用户通过 v-model 更新日期,将不更新 activeDate 以免造成 $emit 死循环
-      if (this.currentMode === 'month') {
-        if (val.getMonth() !== this.activeDate.getMonth()) {
-          this.activeDate = val
-        }
-      }
-      if (this.currentMode === 'week') {
-        const monday = this.getMonday(val)
-        if (+monday !== +this.getMonday(new Date()) || +this.getMonday(this.activeDate) !== +monday) {
-          this.activeDate = val
-        }
-      }
+      // if (this.currentMode === 'month') {
+      //   if (val.getMonth() !== this.activeDate.getMonth()) {
+      //     this.activeDate = val
+      //   }
+      // }
+      // if (this.currentMode === 'week') {
+      //   const monday = this.getMonday(val)
+      //   if (+monday !== +this.getMonday(new Date()) || +this.getMonday(this.activeDate) !== +monday) {
+      //     this.activeDate = val
+      //   }
+      // }
 
       this.updateSwiper()
     },

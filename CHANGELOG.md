@@ -2,6 +2,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+### 1.0.1 (2023-03-30)
+
+- Update: The automatic selection of the first day when switching months or weeks has been adjusted. It is recommended to implement it yourself.
+- Update: Package.json Version
+
 ### 0.2.0 (2022-05-07)
 
 - Update: README.MD
