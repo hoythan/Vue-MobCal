@@ -133,9 +133,9 @@ export default {
         autoHeight: true,
         shortSwipes: true,
         longSwipes: true,
-        touchStartPreventDefault: true,
-        touchMoveStopPropagation: true,
-        passiveListeners: true,
+        // touchStartPreventDefault: true,
+        // touchMoveStopPropagation: true,
+        // passiveListeners: true,
         initialSlide: 1,
         on: {
           slideChange: (swiper) => {
@@ -290,19 +290,49 @@ export default {
     },
     onPrev () {
       this.calSwiper.slideTo()
-      this.$emit('onPrev')
-      this.$emit('prev')
+      this.$emit('onPrev', {
+        currentTime: this.currentTime,
+        slidePages: this.slidePages,
+        currentMode: this.currentMode,
+        value: this.value
+      })
+      this.$emit('prev', {
+        currentTime: this.currentTime,
+        slidePages: this.slidePages,
+        currentMode: this.currentMode,
+        value: this.value
+      })
       this.onChange()
     },
     onNext () {
       this.calSwiper.slideNext()
-      this.$emit('onNext')
-      this.$emit('next')
+      this.$emit('onNext', {
+        currentTime: this.currentTime,
+        slidePages: this.slidePages,
+        currentMode: this.currentMode,
+        value: this.value
+      })
+      this.$emit('next', {
+        currentTime: this.currentTime,
+        slidePages: this.slidePages,
+        currentMode: this.currentMode,
+        value: this.value
+      })
       this.onChange()
     },
     onChange () {
-      this.$emit('onChange')
-      this.$emit('change')
+      this.$emit('onChange', {
+        currentTime: this.currentTime,
+        slidePages: this.slidePages,
+        currentMode: this.currentMode,
+        value: this.value
+      })
+      this.$emit('change', {
+        currentTime: this.currentTime,
+        slidePages: this.slidePages,
+        currentMode: this.currentMode,
+        value: this.value
+      })
     },
     onChangeMode (mode = false) {
       if (typeof mode === 'boolean' && mode) {
