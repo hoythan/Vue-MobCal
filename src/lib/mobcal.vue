@@ -290,11 +290,16 @@ export default {
     },
     onPrev () {
       this.calSwiper.slideTo()
+      this.onChange()
       this.$emit('onPrev')
     },
     onNext () {
       this.calSwiper.slideNext()
+      this.onChange()
       this.$emit('onNext')
+    },
+    onChange () {
+      this.$emit('onChange')
     },
     onChangeMode (mode = false) {
       if (typeof mode === 'boolean' && mode) {
@@ -329,12 +334,12 @@ export default {
       //     this.activeDate = val
       //   }
       // }
-      // if (this.currentMode === 'week') {
-      //   const monday = this.getMonday(val)
-      //   if (+monday !== +this.getMonday(new Date()) || +this.getMonday(this.activeDate) !== +monday) {
-      //     this.activeDate = val
-      //   }
-      // }
+      if (this.currentMode === 'week') {
+        const monday = this.getMonday(val)
+        if (+monday !== +this.getMonday(new Date()) || +this.getMonday(this.activeDate) !== +monday) {
+          this.activeDate = val
+        }
+      }
 
       this.updateSwiper()
     },

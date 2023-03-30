@@ -2,6 +2,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+### 1.0.2 (2023-03-30)
+
+- Fixed: Solution to the problem where the currently selected date does not follow when switching between weeks and months.
+- Update: Trigger the onChange event when switching dates.
+
 ### 1.0.1 (2023-03-30)
 
 - Update: The automatic selection of the first day when switching months or weeks has been adjusted. It is recommended to implement it yourself.

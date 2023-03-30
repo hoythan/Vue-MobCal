@@ -164,6 +164,7 @@ export default {
 | :----- | :---- | :---- |
 | onPrev | Change to last month/week | - |
 | onNext | Change to next month/week | - |
+| onChange | Change month/week | - |
 | onChangeMode | Toggles display mode or set display mode | <span class="t">mode:!string</span> |
 
 ---
