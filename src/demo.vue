@@ -1,6 +1,6 @@
 <template>
     <div>
-        <vue-mob-cal v-model="currentDate" :mode.sync="mode" color="#007873" @onPrev="onPrev" @onNext="onNext">
+        <vue-mob-cal v-model="currentDate" :mode.sync="mode" color="#007873" @prev="onPrev" @change="onChange" @next="onNext">
         </vue-mob-cal>
     </div>
 </template>
@@ -19,6 +19,9 @@ export default {
     },
     onNext () {
       console.log('onNext')
+    },
+    onChange () {
+      console.log('onChange')
     }
   }
 }

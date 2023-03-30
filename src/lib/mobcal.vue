@@ -290,16 +290,19 @@ export default {
     },
     onPrev () {
       this.calSwiper.slideTo()
-      this.onChange()
       this.$emit('onPrev')
+      this.$emit('prev')
+      this.onChange()
     },
     onNext () {
       this.calSwiper.slideNext()
-      this.onChange()
       this.$emit('onNext')
+      this.$emit('next')
+      this.onChange()
     },
     onChange () {
       this.$emit('onChange')
+      this.$emit('change')
     },
     onChangeMode (mode = false) {
       if (typeof mode === 'boolean' && mode) {
