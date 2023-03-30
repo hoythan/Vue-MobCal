@@ -141,18 +141,10 @@ export default {
           slideChange: (swiper) => {
             if (swiperChangeTotal !== 0) {
               this.currentTime = this.slidePages[swiper.activeIndex]
-              swiper.slideTo(1, 0)
+              swiper.slideTo(1, 0, false)
             }
             swiperChangeTotal++
           }
-          // 切换时加载下一个月数据,始终保持只有三个月的数据被渲染
-          // slideChange: (swiper) => {
-          //   if (swiperChangeTotal !== 0) {
-          //     this.currentTime = this.slidePages[swiper.activeIndex]
-          //     swiper.slideTo(1, 0)
-          //   }
-          //   swiperChangeTotal++
-          // }
         }
       })
     })
@@ -302,7 +294,6 @@ export default {
         currentMode: this.currentMode,
         value: this.value
       })
-      this.onChange()
     },
     onNext () {
       this.calSwiper.slideNext()
@@ -318,7 +309,6 @@ export default {
         currentMode: this.currentMode,
         value: this.value
       })
-      this.onChange()
     },
     onChange () {
       this.$emit('onChange', {
@@ -387,6 +377,9 @@ export default {
       }
 
       this.updateSwiper()
+    },
+    slidePages () {
+      this.onChange()
     },
     color: {
       immediate: true,
